@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1724117936 source:c:\users\pc\desktop\desarrollo\paquetes\testpaquetes\main.cpp
+	<winsock2.h>
+	<ws2tcpip.h>
+	<windows.h>
+	<stdio.h>
+	<iostream>
+	<vector>
+	<cmath>
+	<TlHelp32.h>
+
