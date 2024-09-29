@@ -37,7 +37,7 @@ int main() {
 
     // Inicializa Winsock
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        printf("Fallo en la inicializaci髇 de Winsock.\n");
+        printf("Fallo en la inicializaci贸n de Winsock.\n");
         return 1;
     }
 
@@ -49,10 +49,10 @@ int main() {
         return 1;
     }
 
-    // Configura la direcci髇 del destino
+    // Configura la direcci贸n del destino
     dest.sin_family = AF_INET;
-    dest.sin_port = htons(9502); // Puerto, ajusta seg鷑 sea necesario
-    dest.sin_addr.s_addr = inet_addr("45.235.98.26"); // Direcci髇 IP del juego
+    dest.sin_port = htons(9502); // Puerto, ajusta seg煤n sea necesario
+    dest.sin_addr.s_addr = inet_addr("45.235.98.26"); // Direcci贸n IP del juego
 
 
 
@@ -61,18 +61,18 @@ int main() {
     POINT mousePos;
     POINT inicioPos;
 
-    // Captura la posici髇 inicial del mouse
-    MessageBoxA(NULL, "Pon el mouse sobre tu cabeza y presiona enter", "Posici髇", MB_OK);
+    // Captura la posici贸n inicial del mouse
+    MessageBoxA(NULL, "Pon el mouse sobre tu cabeza y presiona enter", "Posici贸n", MB_OK);
     GetCursorPos(&mousePos);
     inicioPos = mousePos;
-    MessageBoxA(NULL, "Listo", "Posici髇", MB_OK);
+    MessageBoxA(NULL, "Listo", "Posici贸n", MB_OK);
 
     // Variables de memoria
     DWORD procId = 0;
-    HWND hwnd = FindWindowA(NULL, "Imperium Classic 1.45"); // Reemplaza "ImperiumClassic" por el nombre real de la ventana
+    HWND hwnd = FindWindowA(NULL, "your game"); 
     GetWindowThreadProcessId(hwnd, &procId);
 
-    uintptr_t  baseAdr = 0x00400000;// Reemplaza "ImperiumClassic.exe" por el nombre real del m骴ulo
+    uintptr_t  baseAdr = 0x00400000;// Reemplaza "ImperiumClassic.exe" por el nombre real del m贸dulo
     HANDLE hProcess = OpenProcess(PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, procId);
 
     const DWORD offsetX1 = 0xc;
@@ -185,7 +185,7 @@ int main() {
         if (GetAsyncKeyState(0x51)) { // Tecla Q
             packet[1] = sXamigo - 0x18;
             packet[3] = sYamigo - 0x18;
-            SendKey(0x31); // Env韆 "1"
+            SendKey(0x31); // Env铆a "1"
             sendResult = sendto(sock, packet, packetSize, 0, (struct sockaddr*)&dest, sizeof(dest));
             if (sendResult == SOCKET_ERROR) {
                 printf("Error al enviar el paquete: %d\n", WSAGetLastError());
@@ -201,7 +201,7 @@ int main() {
         if (GetAsyncKeyState(0x52)) { // Tecla R
             packet[1] = sXmia - 0x18;
             packet[3] = sYmia - 0x18;
-            SendKey(0x31); // Env韆 "1"
+            SendKey(0x31); // Env铆a "1"
             sendResult = sendto(sock, packet, packetSize, 0, (struct sockaddr*)&dest, sizeof(dest));
             if (sendResult == SOCKET_ERROR) {
                 printf("Error al enviar el paquete: %d\n", WSAGetLastError());
